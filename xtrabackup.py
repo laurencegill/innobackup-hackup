@@ -83,5 +83,5 @@ for d in dirs:
     days_old = int(round((epoch_secs - os.stat(d).st_mtime) / 86400,0))
     print d + " is " + repr(days_old) + " days old"
     if os.stat(d).st_mtime < (epoch_secs - keep_days * 86400):
-      print "Removing directories "+d,"from "+cwd,"at "+t
+      print "Removing "+d,"from "+cwd,"at "+t
       shutil.rmtree(d)
