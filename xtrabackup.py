@@ -14,7 +14,6 @@ config.read(home+".xtrabackup.my.cnf")
 user = config.get("client", "user")
 pw = config.get("client", "password")
 backup_location = home+"backups/"
-t = datetime.datetime.now().strftime("%H:%M:%S %Y-%m-%d")
 epoch_secs = time.time()
 c = "None"
 day = datetime.datetime.today().isoweekday()
@@ -83,5 +82,5 @@ for d in dirs:
     days_old = int(round((epoch_secs - os.stat(d).st_mtime) / 86400,0))
     print d + " is " + repr(days_old) + " days old"
     if os.stat(d).st_mtime < (epoch_secs - keep_days * 86400):
-      print "Removing "+d,"from "+cwd,"at "+t
+      print "Removing "+d,"from "+cwd
       shutil.rmtree(d)
